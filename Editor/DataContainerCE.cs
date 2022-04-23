@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEditor;
 using NorskaLib.GoogleSheetsDatabase;
 
-[CustomEditor(typeof(DefinitionsContainerBase), true)]
-public class DefinitionsContainerCE : Editor
+[CustomEditor(typeof(DataContainerBase), true)]
+public class DataContainerCE : Editor
 {
     bool foldout = true;
     Dictionary<string, bool> pagesToggles;
@@ -15,7 +15,7 @@ public class DefinitionsContainerCE : Editor
 
     public override void OnInspectorGUI()
     {
-        var container = (DefinitionsContainerBase)target;
+        var container = (DataContainerBase)target;
 
         foldout = EditorGUILayout.BeginFoldoutHeaderGroup(foldout, "Import settings");   
         if (foldout)
@@ -27,7 +27,7 @@ public class DefinitionsContainerCE : Editor
         base.OnInspectorGUI();
     }
 
-    void DrawGUI(DefinitionsContainerBase container)
+    void DrawGUI(DataContainerBase container)
     {
         var listsInfos = container.GetType().GetFields()
             .Where(fi => Attribute.IsDefined(fi, typeof(PageNameAttribute)))
@@ -123,7 +123,7 @@ public class DefinitionsContainerCE : Editor
         EditorUtility.DisplayProgressBar("Downloading definitions", importQueue.Output, importQueue.Progress);
     }
 
-    void OnImportQueueComplete(DefinitionsContainerBase container)
+    void OnImportQueueComplete(DataContainerBase container)
     {
         EditorUtility.SetDirty(container);
 

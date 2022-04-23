@@ -15,11 +15,11 @@ namespace NorskaLib.GoogleSheetsDatabase
     {
         public const string Template = @"https://docs.google.com/spreadsheets/d/{0}/gviz/tq?tqx=out:csv&sheet={1}";
 
-        private readonly DefinitionsContainerBase container;
+        private readonly DataContainerBase container;
         private readonly FieldInfo[] listsInfos;
         private readonly string documentID;
 
-        public Action<DefinitionsContainerBase> onComplete;
+        public Action<DataContainerBase> onComplete;
 
         public bool abort;
 
@@ -52,7 +52,7 @@ namespace NorskaLib.GoogleSheetsDatabase
         private float ProgressElementDelta
             => 1f / listsInfos.Length;
 
-        public ImportQueue(DefinitionsContainerBase container, FieldInfo[] listsInfos)
+        public ImportQueue(DataContainerBase container, FieldInfo[] listsInfos)
         {
             this.container = container;
             this.listsInfos = listsInfos;
@@ -72,7 +72,7 @@ namespace NorskaLib.GoogleSheetsDatabase
             onComplete.Invoke(container);
         }
 
-        private async Task PopulateList(DefinitionsContainerBase container, FieldInfo listInfo, WebClient webClient)
+        private async Task PopulateList(DataContainerBase container, FieldInfo listInfo, WebClient webClient)
         {
             var contentType = listInfo.FieldType.GetGenericArguments().SingleOrDefault();
             if (contentType is null)
