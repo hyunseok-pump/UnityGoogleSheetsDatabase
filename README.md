@@ -20,7 +20,7 @@ _**Hint:** Design your database as any relational database and stick at least to
 
 ## Setup the Container
 
-Now you can define your custom DataContainer and any amount of Data classes as shown below:
+Define your custom DataContainer and any amount of Data classes as shown below:
 ```
 using NorskaLib.GoogleSheetsDatabase;
 
