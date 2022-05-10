@@ -44,7 +44,11 @@ public class DataContainerCE : Editor
 
         #region Draw doc ID field
 
-        container.documentID = EditorGUILayout.TextField("Document ID",container.documentID);
+        container.documentID = EditorGUILayout.TextField(
+            new GUIContent(
+                "Document Id",
+                "The XXXX part in 'https://docs.google.com/spreadsheets/d/XXXX/edit' URL. NOTE: The document must be accessable by link."), 
+            container.documentID);
 
         #endregion
 

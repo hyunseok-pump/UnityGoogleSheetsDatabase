@@ -1,6 +1,6 @@
 {
-    "name": "NorskaLib.GoogleSheetsDatabase",
-    "rootNamespace": "NorskaLib",
+    "name": "NorskaLib",
+    "rootNamespace": "NorskaLib.GoogleSheetsDatabase",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

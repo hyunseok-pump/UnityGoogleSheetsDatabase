@@ -13,7 +13,7 @@ namespace NorskaLib.GoogleSheetsDatabase
 {
     public class ImportQueue
     {
-        public const string Template = @"https://docs.google.com/spreadsheets/d/{0}/gviz/tq?tqx=out:csv&sheet={1}";
+        public const string URLFormat = @"https://docs.google.com/spreadsheets/d/{0}/gviz/tq?tqx=out:csv&sheet={1}";
 
         private readonly DataContainerBase container;
         private readonly FieldInfo[] listsInfos;
@@ -88,7 +88,7 @@ namespace NorskaLib.GoogleSheetsDatabase
 
             Output = $"Downloading page '{pagename}'...";
 
-            var url = string.Format(Template, documentID, pagename);
+            var url = string.Format(URLFormat, documentID, pagename);
             Task<string> request;
 
             try
