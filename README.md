@@ -41,7 +41,7 @@ public class ExampleData
     public string SomeString;
 }
 ```
-Make sure you spell variables names exactly as columns headers in the spreadsheet.
+_**Important!** Make sure you spell variables names exactly as columns headers in the spreadsheet._
 
 Now you can create DataContainer asset which looks like this:
 ![container-inspector](https://drive.google.com/uc?id=16Rg4NIyj5c8-Qjq5phW0konDMRMKNN21)
