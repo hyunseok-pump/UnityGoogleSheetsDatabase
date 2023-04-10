@@ -49,6 +49,12 @@ namespace NorskaLib.GoogleSheetsDatabase.Utils
 
             if (type == typeof(int))
                 return ParseInt(s, out error);
+            
+            if (type == typeof(long))
+                return ParseLong(s, out error);
+            
+            if (type == typeof(decimal))
+                return ParseDecimal(s, out error);
 
             if (type == typeof(float))
                 return ParseFloat(s, out error);
@@ -80,6 +86,30 @@ namespace NorskaLib.GoogleSheetsDatabase.Utils
 
             if (error)
                 Debug.LogWarning($"Error at parsing '{s}' to Integer");
+
+            return error
+                ? 0
+                : result;
+        }
+        
+        public static long ParseLong(string s, out bool error)
+        {
+            error = !long.TryParse(s, out var result);
+
+            if (error)
+                Debug.LogWarning($"Error at parsing '{s}' to Long Integer");
+
+            return error
+                ? 0
+                : result;
+        }
+        
+        public static decimal ParseDecimal(string s, out bool error)
+        {
+            error = !decimal.TryParse(s, out var result);
+
+            if (error)
+                Debug.LogWarning($"Error at parsing '{s}' to Decimal");
 
             return error
                 ? 0
